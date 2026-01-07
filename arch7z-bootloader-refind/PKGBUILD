@@ -1,0 +1,29 @@
+pkgname=arch7z-bootloader-refind
+_pkgname=arch7z-bootloader-refind
+_destname1="/etc/"
+_destname2="/usr/"
+pkgver=1
+pkgrel=2
+pkgdesc="arch7z-bootloader-refind"
+arch=('any')
+url="https://gitlab.com/Arch7z/arch7z-bootloader-refind"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+https://gitlab.com/Arch7z/${_pkgname}")
+sha256sums=('SKIP')
+install="readme.install"
+
+package() {
+  if [ -d "${srcdir}/${pkgname}${_destname1}" ]; then
+    install -dm755 "${pkgdir}${_destname1}"
+    cp -r "${srcdir}/${pkgname}${_destname1}"/* "${pkgdir}${_destname1}"
+  fi
+
+  if [ -d "${srcdir}/${pkgname}${_destname2}" ]; then
+    install -dm755 "${pkgdir}${_destname2}"
+    cp -r "${srcdir}/${pkgname}${_destname2}"/* "${pkgdir}${_destname2}"
+  fi
+}

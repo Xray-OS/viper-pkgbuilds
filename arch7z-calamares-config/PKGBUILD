@@ -1,0 +1,22 @@
+# Maintainer: angel_lopez <ada_os@proton.me || ada-linux@hotmail.com>
+pkgname=arch7z-calamares-config
+_destname1="/etc"
+pkgver=1
+pkgrel=3
+pkgdesc="calamares for Arch"
+arch=('any')
+url="https://gitlab.com/Arch7z/"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('xeroarch-calamares-settings' 'xray-calamares-settings')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+${url}/${pkgname}")
+sha256sums=('SKIP')
+package() {
+  if [ -d "${srcdir}/${pkgname}${_destname1}" ]; then
+    install -dm755 "${pkgdir}${_destname1}"
+    cp -r "${srcdir}/${pkgname}${_destname1}"/* "${pkgdir}${_destname1}"
+  fi
+}

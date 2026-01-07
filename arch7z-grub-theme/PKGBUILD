@@ -1,0 +1,37 @@
+# Maintainer: Angel Gustavo Lopez xray_os@proton.me
+pkgname=arch7z-grub-theme
+_pkgname=arch7z-grub-theme
+_destname1="/usr/share/grub/themes/Arch-Linux"
+_destname2="/boot/grub/themes/Arch-Linux"
+_licensedir="/usr/share/arch/licenses/"
+pkgver=1
+pkgrel=4
+pkgdesc="Grub theme for Arch"
+arch=(any)
+url="https://gitlab.com/Arch7z/$_pkgname"
+license=('GPL3')
+optdepends=('grub-customizer')
+makedepends=('git')
+depends=()
+install=readme.install
+conflicts=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::git+${url})
+md5sums=('SKIP')
+package() {
+	if [ -d "${pkgdir}${_licensedir}${_pkgname}" ]; then
+	mkdir -p "${pkgdir}${_licensedir}${_pkgname}"
+	mv "${srcdir}/${_pkgname}/"LICENSE "${pkgdir}${_licensedir}${_pkgname}/LICENSE"
+	fi
+
+	if [ -d "${pkgdir}${destname1}" ]; then
+	mkdir -p "${pkgdir}${destname1}"
+	cp -r "${srcdir}/${_pkgname}/${destname1}/"* "${pkgdir}${destname1}"
+	fi
+
+	if [ -d "${pkgdir}${destname2}" ]; then
+	mkdir -p "${pkgdir}${destname2}"
+	cp -r "${srcdir}/${_pkgname}/${destname2}/"* "${pkgdir}${destname2}"
+	fi
+}

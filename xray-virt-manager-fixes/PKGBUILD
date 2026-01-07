@@ -1,0 +1,28 @@
+# Maintainer: Angel Gustavo ada_os@proton.me
+pkgname=xray-virt-manager-fixes
+_pkgname=xray-virt-manager-fixes
+_destname1="/etc"
+_destname2="/usr"
+# _licensedir="/usr/share/xray_os/licenses/"
+pkgver=1
+pkgrel=2
+pkgdesc="Fixes for virt-manager by xray_os"
+arch=('x86_64')
+url="https://gitlab.com/xrayos/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('xeroarch-system-config-git' 'xray-settings')
+# backup=('etc/pacman.d/gnupg/gpg.conf' 'etc/X11/xorg.conf.d/30-touchpad.conf')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/xrayos/${_pkgname}")
+sha256sums=('SKIP')
+#install='readme.install'
+package() {
+  install -dm755 "$pkgdir$_destname1"
+  cp -r "$srcdir/$pkgname/$_destname1/"* "$pkgdir/$_destname1"
+
+  install -dm755 "$pkgdir$_destname2"
+  cp -r "$srcdir/$pkgname/$_destname2/"* "$pkgdir/$_destname2"
+}

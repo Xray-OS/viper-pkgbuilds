@@ -1,0 +1,37 @@
+# Maintainer: Angel Gustavo xray_os at proton.me
+
+pkgname=arch-kde-theme
+_themeName=ARCH_DARK
+_gitname=arch-kde-theme
+pkgver=1
+pkgrel=2
+groups=(Arch7z)
+pkgdesc="Arch KDE Dark Theme"
+arch=('any')
+url="https://gitlab.com/Arch7z/arch-kde-theme"
+license=('GPL3')
+optdepends=('plasma-desktop: for included plasma theme')
+depends=()
+makedepends=('git')
+source=("arch-kde-theme::git+${url}.git")
+sha256sums=('SKIP')
+
+#pkgver() {
+#   cd ${_gitname}
+#   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
+
+package() {
+   # make folders
+   mkdir -p "${pkgdir}/usr/share/color-schemes"
+   mkdir -p "${pkgdir}/usr/share/plasma/desktoptheme"
+   mkdir -p "${pkgdir}/usr/share/plasma/look-and-feel"
+   mkdir -p "${pkgdir}/usr/share/wallpapers"
+   mkdir -p "${pkgdir}/usr/share/icons"
+
+   cp -r "${srcdir}/${_gitname}/color-schemes"/* "${pkgdir}/usr/share/color-schemes"
+   cp -r "${srcdir}/${_gitname}/icons"/* "${pkgdir}/usr/share/icons"
+   cp -r "${srcdir}/${_gitname}/plasma/desktoptheme"/${_themeName}* "${pkgdir}/usr/share/plasma/desktoptheme"
+   cp -r "${srcdir}/${_gitname}/plasma/look-and-feel"/* "${pkgdir}/usr/share/plasma/look-and-feel"
+   cp -r "${srcdir}/${_gitname}/wallpapers"/* "${pkgdir}/usr/share/wallpapers"
+}

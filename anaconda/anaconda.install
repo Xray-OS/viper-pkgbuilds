@@ -1,0 +1,9 @@
+post_install(){
+	echo -e "\nAnaconda installed in /opt/anaconda"
+	echo -e "\nTo enable Conda integration for your shell, run:"
+	echo -e "    /opt/anaconda/bin/conda init"
+	echo -e "\nAfter restarting your terminal, you can activate with:"
+	echo -e "    conda activate"
+	echo -e "    conda deactivate"
+	echo -e "\nThis sets up environment management for Bash, Zsh, Fish, etc.\n"
+}

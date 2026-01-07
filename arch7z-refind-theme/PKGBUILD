@@ -1,0 +1,25 @@
+pkgname=arch7z-refind-theme
+_pkgname=arch7z-refind-theme
+_destname1="/boot/"
+_destname2="/usr/"
+#_licensedir="/usr/share/ada/licenses/"
+pkgver=1
+pkgrel=2
+pkgdesc="arch refind theme"
+arch=('any')
+url="https://gitlab.com/arch7z/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+https://gitlab.com/arch7z/${_pkgname}")
+sha256sums=('SKIP')
+install="readme.install"
+package() {
+  install -dm755 "${pkgdir}${_destname1}"
+  cp -r "${srcdir}/${pkgname}${_destname1}"/* "${pkgdir}${_destname1}"
+
+  install -dm755 "${pkgdir}${_destname2}"
+  cp -r "${srcdir}/${pkgname}${_destname2}"/* "${pkgdir}${_destname2}"
+}

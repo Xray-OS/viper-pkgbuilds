@@ -1,0 +1,29 @@
+post_install() {
+	# No longer enabling services - they are deprecated or moved
+	:
+}
+
+post_upgrade() {
+	# Remove deprecated or moved services files only if still owned by this package
+	if pacman -Qo /usr/lib/systemd/system/arch-graphical-target.service 2>/dev/null | grep -q "^$1"; then
+		systemctl disable arch-graphical-target.service 2>/dev/null || true
+		rm -f /usr/lib/systemd/system/arch-graphical-target.service
+	fi
+
+	if pacman -Qo /usr/lib/systemd/system/gpu-cleanup.service 2>/dev/null | grep -q "^$1"; then
+		systemctl disable gpu-cleanup.service 2>/dev/null || true
+		rm -f /usr/lib/systemd/system/gpu-cleanup.service
+	fi
+}
+
+pre_remove() {
+	# Disable services only if still owned by this package
+	if pacman -Qo /usr/lib/systemd/system/arch-graphical-target.service 2>/dev/null | grep -q "^$1"; then
+		systemctl disable arch-graphical-target.service 2>/dev/null || true
+	fi
+
+	if pacman -Qo /usr/lib/systemd/system/gpu-cleanup.service 2>/dev/null | grep -q "^$1"; then
+		systemctl disable gpu-cleanup.service 2>/dev/null || true
+	fi
+
+}

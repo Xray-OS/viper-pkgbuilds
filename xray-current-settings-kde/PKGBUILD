@@ -1,0 +1,24 @@
+# Maintainer: Angel Gustavo Contreras Lopez | xray_os@proton.me>
+pkgname=xray-current-settings-kde
+_pkgname=xray-current-settings-kde
+_destname="/etc"
+# _licensedir="/usr/share/arch7z/licenses/"
+pkgver=1
+pkgrel=2
+pkgdesc="plasma configuration files for Xray_OS"
+arch=('x86_64')
+url="https://gitlab.com/xray_os-archlinux/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=('arch7z-kde-settings')
+conflicts=('xeroarch-plasma-settings' 'xray-plasma-settings')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+install="${pkgname}".install
+source=(${pkgname}::"git+https://gitlab.com/xray_os-archlinux/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir$_destname"
+  cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+
+}

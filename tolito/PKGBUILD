@@ -1,0 +1,25 @@
+pkgname=tolito
+pkgver=1
+pkgrel=3
+_realver="${pkgver}.${pkgrel}"
+
+pkgdesc="Curated AUR helper that also gets pkgs from Xray's curated repos"
+arch=('x86_64')
+url="https://github.com/Xray-OS/tolito"
+license=('MIT')
+depends=('git' 'base-devel')
+makedepends=()
+provides=('tolito')
+conflicts=()
+source=("${pkgname}-${_realver}.zip::https://github.com/Xray-OS/tolito/archive/refs/tags/v${_realver}.zip")
+sha256sums=('SKIP')
+
+build() {
+    cd "$srcdir/${pkgname}-${_realver}"
+    make
+}
+
+package() {
+    cd "$srcdir/${pkgname}-${_realver}"
+    install -Dm755 tolito "$pkgdir/usr/bin/tolito"
+}

@@ -1,0 +1,24 @@
+# Maintainer: Angel Gustavo ada_os@proton.me
+pkgname=arch7z-wallpapers
+_pkgname=arch7z-wallpapers
+_destname="/usr"
+# _licensedir="/usr/share/xray_os/licenses/"
+pkgver=1
+pkgrel=2
+pkgdesc="Wallpapers files for Arch"
+arch=('x86_64')
+url="https://gitlab.com/Arch7z/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('ada-wallpapers')
+backup=('etc/pacman.d/gnupg/gpg.conf' 'etc/X11/xorg.conf.d/30-touchpad.conf')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/Arch7z/${_pkgname}")
+sha256sums=('SKIP')
+#install='readme.install'
+package() {
+  install -dm755 "$pkgdir$_destname"
+  cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

@@ -1,0 +1,22 @@
+post_install() {
+    # Enable and start gpu-cleanup.service if it's present and owned by this package
+    if pacman -Qo /usr/lib/systemd/system/gpu-cleanup.service 2>/dev/null | grep -q "^$1"; then
+        systemctl enable gpu-cleanup.service 2>/dev/null || true
+        systemctl start gpu-cleanup.service 2>/dev/null || true
+    fi
+}
+
+post_upgrade() {
+    # Re-enable and restart gpu-cleanup.service after post_upgrade
+    if pacman -Qo /usr/lib/systemd/system/gpu-cleanup.service 2>/dev/null | grep -q "^$1"; then
+        systemctl enable gpu-cleanup.service 2>/dev/null || true
+        systemctl restart gpu-cleanup.service 2>/dev/null || true
+    fi
+}
+
+pre_remove() {
+    # Disable gpu-cleanup.service only if still owned by this package
+    if pacman -Qo /usr/lib/systemd/system/gpu-cleanup.service 2>/dev/null | grep -q "^$1"; then
+        systemctl disable gpu-cleanup.service 2>/dev/null || true
+    fi
+}

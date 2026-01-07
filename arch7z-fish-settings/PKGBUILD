@@ -1,0 +1,21 @@
+pkgname=arch7z-fish-settings
+_pkgname=arch7z-fish-settings
+_destname="/etc"
+# _licensedir="/usr/share/arch7z/licenses/"
+pkgver=1
+pkgrel=2
+pkgdesc="Fish settings for Arch"
+arch=('x86_64')
+url="https://gitlab.com/arch7z/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+#conflicts=('')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/arch7z/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir$_destname"
+  cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

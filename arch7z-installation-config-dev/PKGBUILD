@@ -1,0 +1,27 @@
+# Maintainer: Angel_Lopez <xray_os@proton.me>
+pkgname=arch7z-installation-config-dev
+_pkgname=arch7z-installation-config-dev
+_destname="/usr/local/bin/"
+#_licensedir="/usr/share/arch/licenses/"
+pkgver=1
+pkgrel=9
+pkgdesc="Installation files and scripts for Arch7z"
+arch=('any')
+url="https://gitlab.com/arch7z/arch7z-installation-config"
+license=('GPL3')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("arch7z-installation-config::git+https://gitlab.com/Arch7z/arch7z-installation-config.git#branch=arch7z-installation-config-dev") #STABLE
+# source=(${pkgname}::"git+https://gitlab.com/Arch7z/${_pkgname}#branch=alpha-features")
+sha256sums=('SKIP')
+install="readme.install"
+package() {
+
+  install -dm755 "$pkgdir$_destname"
+  cp -r "$srcdir/arch7z-installation-config/$_destname/"* "$pkgdir/$_destname"
+
+#   install -dm755 "$pkgdir$_destname2"
+#   cp -r "$srcdir/$pkgname/$_destname2/"* "$pkgdir/$_destname2"
+}

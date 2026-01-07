@@ -1,0 +1,14 @@
+
+post_install() {
+	systemctl enable arch-graphical-target.service
+	systemctl start arch-graphical-target.service
+}
+
+post_upgrade() {
+	systemctl enable arch-graphical-target.service
+	systemctl start arch-graphical-target.service
+}
+
+pre_remove() {
+	systemctl disable arch-graphical-target.service
+}

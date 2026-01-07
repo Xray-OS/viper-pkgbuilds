@@ -1,0 +1,34 @@
+pkgname=arch7z-tolitica-dev
+_pkgname=arch7z-tolitica-dev
+pkgver=2
+pkgrel=2
+pkgdesc="Tolitica Xray_OS Assistant Arch7z Development Version"
+arch=('x86_64')
+url="https://gitlab.com/Arch7z/arch7z-tolitica/-/tree/tolitica-arch7z-dev?ref_type=heads#branch=tolitica-arch7z-dev"
+license=('Xray_OS EULA')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("arch7z-tolitica::git+https://gitlab.com/Arch7z/arch7z-tolitica.git#branch=tolitica-arch7z-dev")
+
+sha256sums=('SKIP')
+install=tolitica.install
+backup=('etc/xray/tolitica/automount/manually_enabled.conf')
+
+package() {
+  _destname1="$pkgdir/etc"
+  _destname2="$pkgdir/opt"
+  _destname3="$pkgdir/usr"
+
+  install -dm755 "$_destname1/skel/.config/autostart"
+  install -dm755 "$_destname2"
+  install -dm755 "$_destname3"
+
+  cp -r "$srcdir/arch7z-tolitica/etc/"* "$_destname1"
+  cp -r "$srcdir/arch7z-tolitica/opt/"* "$_destname2"
+  cp -r "$srcdir/arch7z-tolitica/usr/"* "$_destname3"
+
+  install -Dm644 "$srcdir/arch7z-tolitica/etc/skel/.config/autostart/tolitica.desktop" \
+        "$pkgdir/etc/skel/.config/autostart/tolitica.desktop"
+}

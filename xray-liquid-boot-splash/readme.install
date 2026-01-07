@@ -1,0 +1,11 @@
+post_install() {
+    sudo plymouth-set-default-theme Xray_liquid 2>/dev/null || true
+    echo -e "[Daemon]\nTheme=Xray_liquid" > /etc/plymouth/plymouthd.conf
+    mkinitcpio -P
+}
+
+post_upgrade() {
+    sudo plymouth-set-default-theme Xray_liquid 2>/dev/null || true
+    echo -e "[Daemon]\nTheme=Xray_liquid" > /etc/plymouth/plymouthd.conf
+    mkinitcpio -P
+}

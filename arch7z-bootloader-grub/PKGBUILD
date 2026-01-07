@@ -1,0 +1,25 @@
+# Maintainer: Angel Gustavo <xray_os@Proton.me>
+pkgname=arch7z-bootloader-grub
+_pkgname=arch7z-bootloader-grub
+_destname1="/etc/pacman.d/hooks"
+pkgver=1
+pkgrel=2
+pkgdesc="Arch bootloader-grub"
+arch=('x86_64')
+url="https://gitlab.com/Arch7z/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('kernel-install-mkinitcpio')
+backup=()
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/Arch7z/${_pkgname}")
+sha256sums=('SKIP')
+#install='readme.install'
+package() {
+  install -dm755 "$pkgdir/$_destname1"
+  for file in "${srcdir}/${pkgname}/${_destname1}"/*.hook; do
+    cp "$file" "$pkgdir/$_destname1"
+  done
+}

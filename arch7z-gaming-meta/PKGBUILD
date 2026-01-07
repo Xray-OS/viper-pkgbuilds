@@ -1,0 +1,21 @@
+# Maintainer: Angel_Lopez <xray_os@proton.me>
+# Meta package for ALL-IN-ONE out-of-the-box gaming on Xray_OS and Arch Linux.
+
+pkgname=arch7z-gaming-meta
+pkgver=1
+pkgrel=1
+arch=('any')
+pkgdesc='Meta package for Gaming including Steam, Lutris, Wine, Essential Proprietary libraries & several other dependencies;
+         Inspired by CachyOS-Gaming-Meta and Arch-Gaming-Meta packages'
+
+depends=('vkbasalt' 'gamemode' 'lib32-gamemode' 'steam' 'lutris' 'heroic-games-launcher-bin' 'wine-staging' 'lib32-giflib' 'lib32-gnutls' 'lib32-mpg123' 'lib32-openal' 'lib32-v4l-utils' 'lib32-libpulse' 'lib32-libxcomposite' 'protontricks' 'protonplus' 'goverlay' 'portproton' 'protonup-qt' 'gamescope' 'dosbox' 'vkd3d' 'wine-gecko' 'wine-mono' 'wine-nine' 'wqy-zenhei' 'lib32-gst-plugins-good' 'lib32-vkd3d' 'bottles' 'proton-ge-custom-bin' 'q4wine-git' 'reshade-shaders-git' 'lib32-ocl-icd' 'lib32-libxslt' 'gtk2+extra' 'steam-native-runtime')
+
+optdepends=(#'bottles: Can be obtained from AUR/Chaotic AUR repository'
+            'cups: Can be required by some very old legacy Windows games'
+            'dxvk-bin: HIGHLY RECOMMENDED - Can be obtained from AUR/Chaotic AUR repository'
+            'proton-ge-custom: Can be obtained from AUR/Chaotic AUR repository'
+            'protonup-qt: Can be obtained from AUR/Chaotic AUR repository'
+            'samba: Can be required by some very old legacy Windows games'
+            'sane: Can be required by some very old legacy Windows games'
+            'wine-installer: A metapackage that provides desktop files and menus to WINE - Can be obtained from AUR/Chaotic AUR repository')
+conflicts=('cachyos-gaming-meta' 'arch-gaming-meta' 'xeroarch-gaming-meta' 'xray-gaming-meta' 'ada-gaming-meta')

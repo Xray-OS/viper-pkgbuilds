@@ -1,0 +1,28 @@
+# Maintainer: Angel Gustavo ada_os@proton.me
+pkgname=arch7z-settings-dev
+_pkgname=arch7z-settings-dev
+_destname1="/etc"
+_destname2="/usr"
+# _licensedir="/usr/share/xray_os/licenses/"
+pkgver=2
+pkgrel=2
+pkgdesc="Testing configuration files and automated-scripts for Arch7z/Xray_OS"
+arch=('x86_64')
+url="https://gitlab.com/Arch7z/arch7z-settings"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('xeroarch-system-config-git' 'xray-settings')
+#backup=('')
+provides=("arch7z-settings")
+options=( !strip !emptydirs )
+source=("arch7z-settings::git+https://gitlab.com/Arch7z/arch7z-settings.git#branch=arch7z-settings-dev")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+  install -dm755 "$pkgdir$_destname1"
+  cp -r "$srcdir/arch7z-settings/$_destname1/"* "$pkgdir/$_destname1"
+
+  install -dm755 "$pkgdir$_destname2"
+  cp -r "$srcdir/arch7z-settings/$_destname2/"* "$pkgdir/$_destname2"
+}

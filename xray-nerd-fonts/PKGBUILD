@@ -1,0 +1,20 @@
+pkgname=xray-nerd-fonts
+_pkgname=xray-nerd-fonts
+_destname="/usr"
+pkgver=1
+pkgrel=4
+pkgdesc="Font settings for Xray_OS"
+arch=('x86_64')
+url="https://gitlab.com/xrayos/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+#conflicts=('')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/xrayos/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir$_destname"
+  cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

@@ -1,0 +1,23 @@
+pkgname=arch7z-installer-dev
+_pkgname=arch7z-installer-dev
+pkgver=6
+pkgrel=7
+pkgdesc="Xray_OS installer Testing Version"
+arch=('x86_64')
+url="https://gitlab.com/Arch7z/arch7z-installer/-/tree/arch7z-installer-dev/usr/share/arch7z-installer?ref_type=heads#branch=arch7z-installer-dev"
+license=('Xray_OS EULA')
+makedepends=('git')
+depends=()
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=("arch7z-installer::git+https://gitlab.com/Arch7z/arch7z-installer.git#branch=arch7z-installer-dev")
+sha256sums=('SKIP')
+install=arch7z-installer.install # Reference for the install script
+
+package() {
+  _destname1="$pkgdir/usr/share"
+
+  install -dm755 "$_destname1"
+
+  cp -r "$srcdir/arch7z-installer/usr/share/"* "$_destname1"
+}

@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Anaconda
+Version=2023.07.1
+Type=Application
+Exec=/opt/anaconda/bin/anaconda-launcher
+Icon=/usr/share/icons/hicolor/128x128/apps/anaconda-navigator.png
+Comment=Open Anaconda Navigator
+Terminal=false
+Categories=Development;Science;

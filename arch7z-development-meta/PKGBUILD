@@ -1,0 +1,17 @@
+# Maintainer: Angel_Lopez <xray_os@proton.me>
+# Meta package for ALL-IN-ONE out-of-the-box development on Xray_OS and Arch Linux.
+
+pkgname=arch7z-development-meta
+pkgver=1
+pkgrel=1
+arch=('any')
+pkgdesc='Several libraries and dependencies for development'
+
+depends=('polkit-gnome' 'python-clickgen' 'geany' 'ninja' 'vala' 'asciidoc' 'meson' 'gobject-introspection' 'lib32-gnutls' 'perl-image-exiftool' 'jq' 'pyside6' 'python-inputs' 'python-pyaml' 'python-pyxdg' 'python-steam' 'python-vdf' 'python-build' 'python-installer' 'libxml2-legacy' 'gcr' 'vmware-keymaps' 'python-booleanoperations' 'python-brotli' 'python-defcon' 'python-fontmath' 'python-fontpens' 'python-fonttools' 'python-fs' 'python-ufonormalizer' 'python-ufoprocessor' 'python-unicodedata2' 'python-zopfli' 'python-scikit-build' 'python-setuptools-scm' 'python-pytest' 'vulkan-headers' 'vkbasalt' 'spirv-headers' 'aic94xx-firmware' 'ast-firmware' 'linux-firmware-qlogic' 'linux-firmware-liquidio' 'linux-firmware-mellanox' 'linux-firmware-nfp' 'upd72020x-fw' 'wd719x-firmware' 'python-nose' 'gcc-fortran' 'parallel' 'go' 'go-tools' 'autoconf-archive' 'gi-docgen' 'lhasa' 'xorg-server-devel')
+
+optdepends=(#'bottles: Can be obtained from AUR/Chaotic AUR repository'
+            'postgresql: Sophisticated object-relational DBMS'
+            'mongodb: document-oriented database system developed and supported by MongoDB Inc'
+            'apache: A high performance Unix-based HTTP server'
+            'discord: All-in-one voice and text chat for gamers')
+conflicts=('cachyos-development-meta' 'ada-development-meta')

@@ -1,0 +1,20 @@
+pkgname=dtos-classic-plasma-theme
+_pkgname=dtos-classic-plasma-theme
+_destname="/usr"
+pkgver=1
+pkgrel=9
+pkgdesc="DTOS Classic Plasma Theme"
+arch=('x86_64')
+url="https://gitlab.com/ada-os/$_pkgname"
+license=('GPL3')
+makedepends=('git')
+depends=()
+#conflicts=('')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/ada-os/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir$_destname"
+  cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

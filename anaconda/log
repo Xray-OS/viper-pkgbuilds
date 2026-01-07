@@ -1,0 +1,22 @@
+
+Installing base environment...
+
+Preparing transaction: ...working... done
+Executing transaction: ...working... done
+entry_point.py:256: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+installation finished.
+install: cannot stat '/run/media/Augusto/Samsung-HDD/files/Archlinux/arch-PKGBUILDS/_pkgs/anaconda/src/anaconda-launcher': No such file or directory
+==> ERROR: A failure occurred in package().
+    Aborting...
+
+    ls -l
+total 1085812
+-rw-r--r-- 1 Augusto users 1111836053 Jul 19 20:13 Anaconda3-2025.06-1-Linux-x86_64.sh
+-rw-r--r-- 1 Augusto users       2878 Jul 19 20:18 PKGBUILD
+-rw-r--r-- 1 Augusto users        155 Jul 19 19:43 anaconda-launcher
+-rw-r--r-- 1 Augusto users        275 Jul 19 20:04 anaconda-navigator.desktop
+-rw-r--r-- 1 Augusto users      13212 Jul 19 13:43 anaconda-navigator.png
+-rw-r--r-- 1 Augusto users        380 Jul 19 20:13 anaconda.install
+-rw-r--r-- 1 Augusto users          0 Jul 19 20:27 log
+drwxr-xr-x 1 Augusto users         16 Jul 19 20:18 pkg/
+drwxr-xr-x 1 Augusto users        346 Jul 19 20:18 src/

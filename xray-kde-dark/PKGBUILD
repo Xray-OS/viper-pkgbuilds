@@ -1,0 +1,21 @@
+# Maintainer: Angel Gustavo Lopez <xray_os@proton.me>
+pkgname=xray-kde-dark
+_pkgname=xray-kde-dark
+_destname="/usr"
+# _licensedir="/usr/share/xray_os/licenses/"
+pkgver=1
+pkgrel=3
+pkgdesc="Xray_OS KDE dark theme"
+arch=('x86_64')
+license=('GPL3')
+makedepends=('git')
+depends=()
+# conflicts=(' ')
+provides=("${pkgname}")
+options=( !strip !emptydirs )
+source=(${pkgname}::"git+https://gitlab.com/xray_os-archlinux/${_pkgname}")
+sha256sums=('SKIP')
+package() {
+  install -dm755 "$pkgdir$_destname"
+  cp -r "$srcdir/$pkgname/$_destname/"* "$pkgdir/$_destname"
+}

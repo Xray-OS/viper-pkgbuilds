@@ -1,0 +1,28 @@
+post_install() {
+  local desktop_file="/usr/share/applications/xray_os-install.desktop"
+  local symlink_target="/usr/share/arch7z-installer/arch7z-installer"
+  local symlink_path="/usr/bin/arch7z-installer"
+
+  echo "Installing xray_os-install desktop shortcut..."
+
+  for user_home in /home/*; do
+    local desktop_dir="$user_home/Desktop"
+    local username
+    username="$(basename "$user_home")"
+
+    if [[ -d "$desktop_dir" ]]; then
+      install -m 755 -o "$username" -g "$username" "$desktop_file" "$desktop_dir/xray_os-install.desktop"
+      echo "✓ Installed for user: $username"
+    fi
+  done
+
+  echo "Creating symlink for Arch7z-Installer..."
+  ln -sf "$symlink_target" "$symlink_path"
+}
+
+post_remove() {
+  local symlink_path="/usr/bin/arch7z-installer"
+
+  echo "Removing Arch7z-Installer symlink..."
+  rm -f "$symlink_path"
+}
